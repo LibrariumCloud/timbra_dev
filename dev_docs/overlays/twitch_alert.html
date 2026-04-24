@@ -1,0 +1,302 @@
+<!-- CODE -->
+<style>
+    body{
+        margin: 0px;
+        padding-top: 50px;
+
+        background-color: rgb(25, 25, 25);
+    }
+</style>
+<script>
+    var pictures = {
+        "water":{
+            "name": "Выпей воды",
+            "left_image": "https://librariumcloud.github.io/timbra_dev/docs/pictures/Drink_Milk.png",
+            "right_image": "https://librariumcloud.github.io/timbra_dev/docs/pictures/Drink_Red.png",
+            "sound": "https://librariumcloud.github.io/timbra_dev/docs/sounds/alert_water.mp3",
+            "price": "x260"
+        },
+        "mlep":{
+            "name": "Mlep! 👅",
+            "left_image": "https://librariumcloud.github.io/timbra_dev/docs/pictures/Star.png",
+            "right_image": "https://librariumcloud.github.io/timbra_dev/docs/pictures/Moon.png",
+            "sound": "https://librariumcloud.github.io/timbra_dev/docs/sounds/alert_mlep.wav",
+            "price": "x300"
+        },
+        "blea":{
+            "name": "Blea-a-a~",
+            "left_image": "https://librariumcloud.github.io/timbra_dev/docs/pictures/Star.png",
+            "right_image": "https://librariumcloud.github.io/timbra_dev/docs/pictures/Moon.png",
+            "sound": "https://librariumcloud.github.io/timbra_dev/docs/sounds/alert_blea.wav",
+            "price": "x300"
+        },
+        "pull-ups":{
+            "name": "Подтягууууушки",
+            "left_image": "https://librariumcloud.github.io/timbra_dev/docs/pictures/Statue.png",
+            "right_image": "https://librariumcloud.github.io/timbra_dev/docs/pictures/Statue_Plush.png",
+            "sound": "https://librariumcloud.github.io/timbra_dev/docs/sounds/alert_pull-ups.wav",
+            "price": "x380"
+        },
+        "wisdom":{
+            "name": "Козья мудрость",
+            "left_image": "https://librariumcloud.github.io/timbra_dev/docs/pictures/Book_closed.png",
+            "right_image": "https://librariumcloud.github.io/timbra_dev/docs/pictures/Book_open.png",
+            "sound": "https://librariumcloud.github.io/timbra_dev/docs/sounds/alert_wisdom.wav",
+            "price": "x666"
+        },
+        "smile_chat":{
+            "name": "Чат только для смайликов",
+            "left_image": "https://librariumcloud.github.io/timbra_dev/docs/pictures/CardMessage.png",
+            "right_image": "https://librariumcloud.github.io/timbra_dev/docs/pictures/CardMilk.png",
+            "sound": "https://librariumcloud.github.io/timbra_dev/docs/sounds/alert_smile_chat.mp3",
+            "price": "x700"
+        },
+        "voice_message":{
+            "name": "Голосовое сообщение",
+            "left_image": "https://librariumcloud.github.io/timbra_dev/docs/pictures/Megaphone.png",
+            "right_image": "https://librariumcloud.github.io/timbra_dev/docs/pictures/Quest.png",
+            "sound": "https://librariumcloud.github.io/timbra_dev/docs/sounds/alert_voice.wav",
+            "price": "x1200"
+        },
+        "continue_stream":{
+            "name": "Продлить стрим",
+            "left_image": "https://librariumcloud.github.io/timbra_dev/docs/pictures/Relic.png",
+            "right_image": "https://librariumcloud.github.io/timbra_dev/docs/pictures/Pancake.png",
+            "sound": "https://librariumcloud.github.io/timbra_dev/docs/sounds/alert_continue_stream.mp3",
+            "price": "x2000"
+        },
+        "desire":{
+            "name": "Исполнитель желаний",
+            "left_image": "https://librariumcloud.github.io/timbra_dev/docs/pictures/RedCard.png",
+            "right_image": "https://librariumcloud.github.io/timbra_dev/docs/pictures/PurpleCard.png",
+            "sound": "https://librariumcloud.github.io/timbra_dev/docs/sounds/alert_mlep.wav",
+            "price": "x16666"
+        }
+    }
+
+    window.onload = function(){
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+
+        var alert_type = urlParams.get("type");
+        document.querySelector("#points_name").innerHTML = pictures[alert_type].name;
+        document.querySelector("#left_image").src = pictures[alert_type].left_image;
+        document.querySelector("#right_image").src = pictures[alert_type].right_image;
+        document.querySelector("#points_price").innerHTML = pictures[alert_type].price;
+    }
+</script>
+
+<!-- OVERLAY -->
+<meta charset="UTF-8">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
+
+    :root{
+        --main-panel-color: #100020;
+        --sub-panel-color: #6f2fb3;
+    }
+
+    *{
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+    }
+
+    .main-view{
+        position: fixed;
+
+        width: 100%;
+
+        display: flex;
+        align-items: end;
+        justify-content: center;
+
+        animation: fade-in-out 15s ease-in-out forwards;
+    }
+
+    .main-panel{
+        position: relative;
+
+        color: white;
+
+        z-index: 1000;
+    }
+
+    .main-panel>label{
+        padding: 18px 80px;
+
+        background: url("https://librariumcloud.github.io/timbra_dev/docs/decors/back.png") center;
+        background-size: cover;
+        border-radius: 16px;
+        box-shadow: inset 0px 0px 5px 5px #5e2997;
+
+        font-size: 20px !important;
+        font-weight: 500;
+
+        filter: drop-shadow(0px 0px 2px rgba(0,0,0,0.65));
+    }
+
+    .left-image{
+        position: absolute;
+        top: -20px;
+        left: -40px;
+        z-index: -2;
+
+        width: 64px;
+        transform: rotateZ(-32deg);
+
+        animation: fade-left-anim 15s ease-in-out forwards;
+    }
+
+    .right-image{
+        position: absolute;
+        top: -35px;
+        right: -35px;
+        z-index: -2;
+
+        width: 64px;
+        transform: rotateZ(32deg);
+
+        animation: fade-right-anim 15s ease-in-out forwards;
+    }
+
+    .sub{
+        position: absolute;
+
+        padding: 5px 15px;
+
+        background: var(--sub-panel-color);
+        border-radius: 10px;
+        box-shadow: inset 0px 0px 2px 2px rgba(255, 255, 255, 0.2);
+
+        font-weight: 700;
+    }
+
+    .name-panel{
+        top: -142%;
+        left: -16px;
+    }
+
+    .price-panel{
+        bottom: -142%;
+        right: -16px;
+
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .price-panel>img{
+        width: 16px;
+    }
+
+    .spark{
+        width: 42px;
+
+        position: absolute;
+        z-index: 100000;
+    }
+
+    @keyframes fade-in-out{
+        0%{
+            opacity: 0;
+            filter: blur(16px);
+        }
+        5%{
+            opacity: 1;
+            filter: blur(0px);
+        }
+        95%{
+            opacity: 1;
+            filter: blur(0px);
+        }
+        100%{
+            opacity: 0;
+            filter: blur(16px);
+        }
+    }
+
+    @keyframes fade-left-anim{
+        0%{
+            opacity: 0;
+            scale: 0;
+            transform: rotateZ(0deg);
+            left: -15px;
+        }
+        10%{
+            opacity: 1;
+            scale: 1;
+            transform: rotateZ(-32deg);
+            left: -40px;
+        }
+        95%{
+            opacity: 1;
+            scale: 1;
+            transform: rotateZ(-32deg);
+            left: -40px;
+        }
+        100%{
+            opacity: 0;
+            scale: 0;
+            transform: rotateZ(0deg);
+            left: -15px;
+        }
+    }
+
+    @keyframes fade-right-anim{
+        0%{
+            opacity: 0;
+            scale: 0;
+            transform: rotateZ(0deg);
+            right: -15px;
+        }
+        10%{
+            opacity: 1;
+            scale: 1;
+            transform: rotateZ(32deg);
+            right: -35px;
+        }
+        95%{
+            opacity: 1;
+            scale: 1;
+            transform: rotateZ(32deg);
+            right: -35px;
+        }
+        100%{
+            opacity: 0;
+            scale: 0;
+            transform: rotateZ(0deg);
+            right: -15px;
+        }
+    }
+
+    @keyframes spark-anim{
+        0%{
+            scale: 0;
+            transform: rotateZ(0deg);
+        }
+        50%{
+            scale: 1;
+        }
+        100%{
+            scale: 0;
+            transform: rotateZ(360deg);
+        }
+    }
+</style>
+<div class="main-view">
+    <div class="main-panel">
+        <img id="left_image" class="left-image" src="https://librariumcloud.github.io/gamesAPI/Drink_Milkshake.png">
+        <img id="right_image" class="right-image" src="https://librariumcloud.github.io/gamesAPI/Drink_Gin.png">
+        <label id="points_name">Подтягууууушки</label>
+        <div class="name-panel sub">TimbraTV</div>
+        <div class="price-panel sub">
+            <label id="points_price">x380</label>
+            <img src="https://librariumcloud.github.io/timbra_dev/docs/pictures/Milk.png">
+        </div>
+        <img class="spark" style="width: 48px; top: 20px; left: 10px; animation: spark-anim 5s infinite;" src="https://librariumcloud.github.io/timbra_dev/docs/decors/sparkling.png">
+        <img class="spark" style="width: 50px; bottom: 20px; right: 10px; animation: spark-anim 6s infinite;" src="https://librariumcloud.github.io/timbra_dev/docs/decors/sparkling.png">
+        <img class="spark" style="width: 32px; top: 35px; right: 57px; animation: spark-anim 4s infinite;" src="https://librariumcloud.github.io/timbra_dev/docs/decors/sparkling.png">
+        <img class="spark" style="width: 32px; bottom: 35px; left: 57px; animation: spark-anim 7s infinite;" src="https://librariumcloud.github.io/timbra_dev/docs/decors/sparkling.png">
+    </div>
+</div>
